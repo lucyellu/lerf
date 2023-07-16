@@ -51,6 +51,11 @@ class LERFModel(NerfactoModel):
             self.config.hashgrid_resolutions,
             clip_n_dims=self.image_encoder.embedding_dim,
         )
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.prompt = ViewerText(name="Prompt", default_value="banana")
+        self.anti_prompt = ViewerText(name="Anti-prompt", default_value="object, thing,stuff")
 
         # populate some viewer logic
         # TODO use the values from this code to select the scale
